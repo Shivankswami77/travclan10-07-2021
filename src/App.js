@@ -1,4 +1,5 @@
 import "./App.css";
+import Customerbids from "./components/Customerbids";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import {
   makeStyles,
@@ -8,6 +9,7 @@ import {
 } from "@material-ui/core";
 
 import Home from "./components/Home";
+import CustomerDetails from "./components/CustomerDetails";
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -50,6 +52,13 @@ function App() {
         <div className={classes.appMain}>
           <Switch>
             <Route path="/" exact component={Home}></Route>
+
+            <Route path="/customerbids" exact component={Customerbids}></Route>
+            <Route
+              path="/customerdetails"
+              exact
+              component={CustomerDetails}
+            ></Route>
           </Switch>
         </div>
       </Router>
