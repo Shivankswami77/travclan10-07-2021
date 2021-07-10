@@ -32,7 +32,7 @@ const headCells = [
 
   { id: "email", label: "Email Address" },
   { id: "mobile", label: "Phone Number" },
-  //   { id: "bids", label: "Customer Bids" },
+  { id: "bids", label: "Customer Bids" },
 
   { id: "userDetails", label: "User Image" },
 ];
@@ -110,11 +110,13 @@ const Customerbids = () => {
         // console.log(products, "fdfdfdf");
         setRecords(response.data);
       });
-  for (let i = 1; i < records.length; i++) {
+  for (let i = 0; i < records.length; i++) {
     console.log(records[i].bids, "hmhmhm");
     for (let j = 0; j < records[i].bids.length; j++) {
-      const sorted = records[i].bids[0].amount;
-      console.log(sorted, "sorted");
+      const sorted = records[i].bids[j].amount;
+      console.log(records[i].bids, "sorted");
+      const srt = records[i].bids.filter((bid) => bid);
+      console.log(srt, "srt");
     }
   }
   // const data2 = async () => {
@@ -147,30 +149,30 @@ const Customerbids = () => {
           <TableBody>
             {recordsAfterPagingAndSorting().map((item) => (
               <>
-                {data.map((bid) => (
-                  <>
-                    {console.log(item.bids[0], "amount")}
-                    <TableRow key={item.id}>
-                      <TableCell>{item.firstname}</TableCell>
-                      <TableCell>{item.lastname}</TableCell>
-                      <TableCell>{item.email}</TableCell>
+                {/* {data.map((bid) => (
+                  <> */}
+                {console.log(item.bids[0], "amount")}
+                <TableRow key={item.id}>
+                  <TableCell>{item.firstname}</TableCell>
+                  <TableCell>{item.lastname}</TableCell>
+                  <TableCell>{item.email}</TableCell>
 
-                      <TableCell>{item.phone}</TableCell>
-                      {/* <TableCell>{bid.amount}</TableCell> */}
-                      {/* <TableCell>{item.bids[0].amount}</TableCell> */}
+                  <TableCell>{item.phone}</TableCell>
+                  <TableCell>{item.bids[0].amount}</TableCell>
+                  {/* <TableCell>{item.bids[0].amount}</TableCell> */}
 
-                      <TableCell>
-                        {
-                          <img
-                            style={{ height: 50, width: 50, borderRadius: 200 }}
-                            src={item.avatarUrl}
-                            alt=""
-                          />
-                        }
-                      </TableCell>
-                    </TableRow>
-                  </>
-                ))}
+                  <TableCell>
+                    {
+                      <img
+                        style={{ height: 50, width: 50, borderRadius: 200 }}
+                        src={item.avatarUrl}
+                        alt=""
+                      />
+                    }
+                  </TableCell>
+                </TableRow>
+                {/* </>
+                ))} */}
               </>
             ))}
           </TableBody>
